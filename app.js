@@ -5,23 +5,21 @@
  * versão: 1.0
 ***********************************************************************************************************************/
 
+const {request, response} = require("express")
 const express = require('express')
 const cors = require('cors')
 const bodyparser = require('body-parser')
-
 const app = express()
 
 
 app.use((request, response, next)=>{
     response.header('Acess-Control-Allow-Origin', '*')
     response.header('Acess-Control-Allow-Methods', 'GET')
-
     app.use(cors())
-
     next()
 })
 
-var cursos = require('./PROJETO-FINAL modulo')
+const cursos = require('./modulo/funcoes.js')
 
 app.get('/v1/lion-school/cursos', cors(), async function(request, response){
 
