@@ -26,7 +26,7 @@ const getListarCursos = function () {
 }
 
 
-const getlistarAlunos = function() {
+const getListarAlunos = function() {
     let listadosAlunos = [];
     let alunos = {};
 
@@ -144,17 +144,17 @@ const getAlunosCursoEAno = function (sigladocurso, anoConclusao) {
                     sexo: aluno.sexo,
                     curso: curso.nome,
                     conclusao: curso.conclusao
-                });
+                })
             }
-        });
-    });
+        })
+    })
 
-    return resultado.length > 0 ? resultado : false;
+    return resultado.length > 0 ? resultado : false
 }
 
 module.exports ={
     getListarCursos,
-    getlistarAlunos,
+    getListarAlunos,
     getmatriculaAluno,
     getCursoSigla,
     getlistarStatusAlunos,
@@ -171,11 +171,11 @@ module.exports ={
 
 //console.log(getListarCursos());
 //console.log(getlistarAlunos());
-//console.log(getmatriculaAluno());
-//console.log(getCursoSigla());
+//console.log(getmatriculaAluno('20151001024'));
+//console.log(getCursoSigla(RDS));
 //console.log(getlistarStatusAlunos());
 //console.log(getAlunosPorCurso());
-console.log(getAlunosCursoEAno('DS', 2024)); 
+//console.log(getAlunosCursoEAno('DS', 2024)); 
 
 
 

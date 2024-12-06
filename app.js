@@ -23,7 +23,7 @@ const cursos = require('./modulo/funcoes.js')
 
 app.get('/v1/lion-school/cursos', cors(), async function(request, response){
 
-    let dados = cursos.getListaCursos()
+    let dados = cursos.getListarCursos()
 
     response.status(200)
     response.json(dados)
@@ -31,7 +31,7 @@ app.get('/v1/lion-school/cursos', cors(), async function(request, response){
 
 
 app.get('/v1/lion-school/alunos', cors(), async function(request, response){
-    let dados = cursos.getListaAlunos()
+    let dados = cursos.getListarAlunos()
 
     response.status(200)
     response.json(dados)
@@ -43,7 +43,7 @@ app.get('/v1/lion-school/alunos/filtro', async function(request, response) {
 
 
         if (sigla && status) {
-            dados = cursos.getDisciplinaAluno(sigla, status)
+            dados = cursos.getAlunosPorCurso(sigla, status)
             if (dados) {
                 return response.status(200).json(dados)
             } else {
@@ -52,7 +52,7 @@ app.get('/v1/lion-school/alunos/filtro', async function(request, response) {
         }
         
     if (status) {
-        dados = cursos.getStatusAluno(status)
+        dados = cursos.getlistarStatusAlunos(status)
         if (dados) {
             return response.status(200).json(dados)
         } else {
@@ -61,7 +61,7 @@ app.get('/v1/lion-school/alunos/filtro', async function(request, response) {
     }
 
     if (sigla && ano_conclusao) {
-        dados = cursos.getAnoConclusao(sigla, ano_conclusao)
+        dados = cursos.getAlunosCursoEAno(sigla, ano_conclusao)
         if (dados) {
             return response.status(200).json(dados)
         } else {
@@ -74,7 +74,7 @@ app.get('/v1/lion-school/alunos/filtro', async function(request, response) {
 
 app.get('/v1/lion-school/alunos/:matricula', cors(), async function (request, response) {
     let matricula = request.params.matricula
-    let dados = cursos.getMatricula(matricula)
+    let dados = cursos.getmatriculaAluno(matricula)
     if(dados){
         response.status(200)
         response.json(dados)
@@ -87,7 +87,7 @@ app.get('/v1/lion-school/alunos/:matricula', cors(), async function (request, re
 app.get('/v1/lion-school/alunos/cursos/:sigla', cors(), async function (request, response){
     
     let siglaCurso = request.params.sigla
-    let dados = cursos.getAlunosCurso(siglaCurso)
+    let dados = cursos.getCursoSigla(siglaCurso)
     
     if(dados){
         response.status(200)
